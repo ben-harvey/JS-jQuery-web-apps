@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Contact Manager</title>
+  <script src="/javascripts/jquery.js"></script>
+  <script src="/javascripts/handlebars.js"></script>
+  <link rel="stylesheet" href="/stylesheets/app.css">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
+</head>
+
+<body>
+  <form id="search" action="" method="get">
+    <fieldset id="search_fieldset">
+      <input type="search" placeholder="Enter a contact name" />
+      <input type="submit" value="Search" />
+    </fieldset>
+  </form>
+
+  <div id="tags_container">
+    <button id="all" class="tag active_tag">All</button>
+  </div>
+
+  <button id="add_contact_button">Add Contact</button>
+
+  <p id="message">Message</p>
+
+  <form id="add_contact_form" action="" method="post" novalidate>
+    <fieldset>
+      <legend>Add Contact</legend>
+      <dl>
+        <dt>
+          <label for="full_name">Full Name</label>
+        </dt>
+        <dd>
+          <input type="text" id="full_name" name="full_name" pattern="[a-zA-Z ]+" required autofocus>
+          <span class="error_message"></span>
+        </dd>
+        <dt>
+          <label for="email">Email</label>
+        </dt>
+        <dd>
+          <input type="text" required name="email" id="email" placeholder="someone@example.com" pattern=".+@.+">
+          <span class="error_message"></span>
+        </dd>
+        <dt>
+          <label for="phone_number">Phone Number</label>
+        </dt>
+        <dd>
+          <input required type="text" name="phone_number" id="phone_number" pattern="\d{3}-\d{3}-\d{4}" placeholder="123-456-7890">
+          <span class="error_message"></span>
+        </dd>
+        <dt>
+          <label for="tags">Tags</label>
+        </dt>
+        <dd>
+          <input type="text" name="tags" id="tags" pattern="([a-zA-Z]+,{1})?([a-zA-Z]+)?" placeholder="first,second,third">
+          <span class="error_message"></span>
+        </dd>
+        <p class="form_errors"></p>
+        <div id="add_form_buttons">
+        <button id="add_button" type="submit" action="">Add</button>
+        <button id="cancel_button">Cancel</button>
+        </div>
+      </dl>
+    </fieldset>
+  </form>
+
+  <div id="contacts">
+  </div>
+
+<script type="text/x-handlebars" id="update_handlebar">
+    <form id="update_contact_form" action="" method="post" novalidate>
+    <fieldset>
+      <legend>Update Contact</legend>
+      <dl>
+        <dt>
+          <label for="update_full_name">Full Name</label>
+        </dt>
+        <dd>
+          <input type="text" id="update_full_name" name="full_name" pattern="[a-zA-Z ]+" required autofocus="" value="{{full_name}}">
+          <span class="error_message"></span>
+        </dd>
+        <dt>
+          <label for="update_email">Email</label>
+        </dt>
+        <dd>
+          <input type="text" required name="email" id="update_email" placeholder="someone@example.com" pattern=".+@.+" value="{{email}}">
+          <span class="error_message"></span>
+        </dd>
+        <dt>
+          <label for="update_phone">Phone Number</label>
+        </dt>
+        <dd>
+          <input required type="text" name="phone_number" id="update_phone" pattern="\d{3}-\d{3}-\d{4}" placeholder="123-456-7890" value="{{phone_number}}">
+          <span class="error_message"></span>
+        </dd>
+        <dt>
+          <label for="update_tags">Tags</label>
+        </dt>
+        <dd>
+          <input type="text" name="tags" id="update_tags" pattern="([a-zA-Z]+,{1})*([a-zA-Z]+)?" placeholder="first,second,third" value="{{tags}}">
+          <span class="error_message"></span>
+        </dd>
+        <p class="form_errors"></p>
+
+       <div class="buttons">
+        <button id="update_button" type="submit" action="/api/contacts/{{id}}">Update</button>
+         <button id="cancel_update_button">Cancel</button>
+       </div>
+      </dl>
+    </fieldset>
+  </form>
+  </script>
+
+  <script type="text/x-handlebars" id="contact_handlebar">
+    {{#each contacts}}
+      <div class="contact" data-id="{{id}}">
+        <h3 class="contact_full_name">{{full_name}}</h3>
+        <p id="contact_email">
+          {{email}}
+        </p>
+        <p id="contact_phone">
+          {{phone_number}}
+        </p>
+        {{#if tags}}
+          <div class="tags">
+            {{#each tags}}
+               <div class="tag">{{this}}</div>
+             {{/each}}
+          </div>
+        {{/if}}
+        <div class="buttons">
+          <i class="material-icons update_button">edit</i>
+          <i class="material-icons delete_button">delete</i>
+        </div>
+      </div>
+  {{/each}}
+  </script>
+
+  <script type="text/x-handlebars" id="tag_handlebar">
+    {{#each tags}}
+      <button class="tag">{{this}}</button>
+    {{/each}}
+  </script>
+  <script src="/javascripts/app.js"></script>
+</body>
+
+</html>

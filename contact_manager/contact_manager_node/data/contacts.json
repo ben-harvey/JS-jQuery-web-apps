@@ -1,0 +1,44 @@
+[
+  {
+    "full_name": "Cheeburger",
+    "phone_number": "123-345-4567",
+    "email": "benjaminriderharvey@gmail.com",
+    "tags": "hot,fish,him,you,cheese",
+    "id": 16
+  },
+  {
+    "full_name": "boot",
+    "phone_number": "123-345-4444",
+    "email": "barbhoney@gmail.com",
+    "tags": "",
+    "id": 19
+  },
+  {
+    "full_name": "Cheese man",
+    "phone_number": "123-345-4567",
+    "email": "benjaminriderharvey@gmail.com",
+    "tags": "cheese,fish",
+    "id": 20
+  },
+  {
+    "full_name": "Oscar Harvey",
+    "phone_number": "828-298-0405",
+    "email": "oscar@oscar.com",
+    "tags": "nerf,reading",
+    "id": 21
+  },
+  {
+    "full_name": "Joe Schmo",
+    "phone_number": "123-345-4567",
+    "email": "joe@schmo.com",
+    "tags": "nerf,cheese",
+    "id": 22
+  },
+  {
+    "full_name": "Harry Potter",
+    "phone_number": "123-345-4567",
+    "email": "wizard@hogwarts.com",
+    "tags": "excrucio",
+    "id": 23
+  }
+]

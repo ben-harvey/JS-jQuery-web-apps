@@ -1,0 +1,2 @@
+- In the LS implementation, iside each group of completed/uncompleted todos, todos with a date are sorted by date, while todos with 'No Due Date' can appear before or after those sorted by date.
+- In my implementation, todos with 'No Due Date' appear first in both groups, while following todos are sorted by date.
